@@ -1,4 +1,4 @@
-import { BasicTypes, ObjectLiteral } from "./typescript"
+import { BasicFunctions, BasicTypes, Counter, Counterwithhook, ObjectLiteral } from "./typescript"
 
 
 
@@ -7,8 +7,11 @@ function App() {
     <>
     <h1>Introduccion a REACT</h1>
 
-    {/* <BasicTypes></BasicTypes> */}
-   <ObjectLiteral></ObjectLiteral> 
+    {/* <BasicTypes></BasicTypes>
+   <ObjectLiteral></ObjectLiteral>  */}
+   {/* <BasicFunctions></BasicFunctions> */}
+   {/* <Counter></Counter> */}
+   <Counterwithhook></Counterwithhook>
     </>
   )
 }

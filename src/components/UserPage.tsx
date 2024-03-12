@@ -1,16 +1,13 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import type { ReqResUserListResponse,User } from '../interfaces';
+import { useUsers } from '../hooks/useUsers';
+import { UserRow } from './UserRows';
+
 
 export const UserPage = () => {
 
-    useEffect(()=>{
-        // fetch("https://reqres.in/api/users?page=2")
-        // .then(resp => resp.json())
-        // .then(data => console.log(data));
-
-        axios.get('https://reqres.in/api/users?page=2')
-        .then(resp => console.log(resp.data));
-    })
+    const {users,nexPage,preyPage} = useUsers();
   return (
     <>
     <h3>Usuarios</h3>
@@ -19,17 +16,25 @@ export const UserPage = () => {
             <tr>
                 <th>Avatar</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
+                <th>email</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>avatar</td>
-                <td>nombre</td>
-                <td>apellido</td>
-            </tr>
+            {
+                users.map(user =>(
+                <UserRow key={user.id} user={user}></UserRow>
+                ))
+            }
+
         </tbody>
     </table>
+    <div>
+        <button onClick={preyPage}>Prev</button>
+        <button onClick={nexPage}>Next</button>
+    </div>
+   
     </>
+    
   )
 }
+
